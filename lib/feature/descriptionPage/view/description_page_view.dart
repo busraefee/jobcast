@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:jobjob/models/homemodel.dart';
+import 'package:jobjob/models/usermodel.dart';
 
 class DescriptionPageView extends StatelessWidget {
-  const DescriptionPageView({Key? key}) : super(key: key);
+  final JobsModel job;
+  final UserModel user;
+  DescriptionPageView({Key? key, required this.job, required this.user})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,20 +21,22 @@ class DescriptionPageView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.network(
-                  "https://picsum.photos/300/300",
+                  job.jobImage ?? "",
                   fit: BoxFit.cover,
                 ),
-                const Text("Köpek Gezdirme", textAlign: TextAlign.end),
-                const Text("Golden cinsi köpeğimi Atatürk parkında 1 saat gezdirecek birini arıyorum"),
-                   const SizedBox(height: 40),
+                Text(job.jobName ?? "", textAlign: TextAlign.end),
+                Text(job.jobDetail ?? ""),
+                const SizedBox(height: 40),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: const [
+                  children: [
                     Text(
                       "İlan Detayları",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    Text("İlan Tarihi 22.03.2022")
+                    job.jobDate != null
+                        ? Text("İlan Tarihi: ${job.jobDate}")
+                        : Text("İlan Tarihi Girilmedi")
                   ],
                 ),
                 Row(
@@ -37,11 +44,11 @@ class DescriptionPageView extends StatelessWidget {
                   children: [
                     Column(
                       children: [
-                        Text("Furkan Can Altunbaş"),
-                        
-                        Text("Fiyat : 50TL"),
-                        Text("Cep: 055550000000"),
-                        Text("ADDRESS"),
+                        Text(
+                            "${user.name} ${user.surname}"), //profilden gelicek
+                        Text("Fiyat : ${job.cost}"),
+                        Text("Cep: ${user.phoneNumber}"), //profilden gelicek
+                        Text(job.address ?? ""),
                       ],
                     )
                   ],

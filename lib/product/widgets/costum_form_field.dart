@@ -8,13 +8,19 @@ class CustomFormField extends StatefulWidget {
       required this.inputType,
       required this.name,
       this.obscureText,
-      required this.focusnode})
+      required this.focusnode,
+      this.validator,
+      this.suffixIcon,
+      this.visible})
       : super(key: key);
   final TextEditingController controller;
   final TextInputType inputType;
   final String name;
   final bool? obscureText;
   final FocusNode focusnode;
+  final String? Function(String?)? validator;
+  final IconButton? suffixIcon;
+  final bool? visible;
 
   @override
   _CustomFormFieldState createState() => _CustomFormFieldState();
@@ -26,18 +32,22 @@ class _CustomFormFieldState extends State<CustomFormField> {
     return TextFormField(
       controller: widget.controller,
       keyboardType: widget.inputType,
-      obscureText: widget.obscureText ?? false,
+      obscureText: widget.visible ?? false,
       decoration: InputDecoration(
+        suffixIcon: widget.suffixIcon,
         labelText: widget.name,
         labelStyle: const TextStyle(color: AppColor.loginText),
         border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(2),
-            borderSide: BorderSide(color: AppColor.loginFormField, width: 2)),
-        focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(2),
+            borderRadius: BorderRadius.circular(20),
             borderSide: BorderSide(
-              width: 3,
-              color: AppColor.loginFormField,
+              color: AppColor.darkBlue,
+              width: 5,
+            )),
+        focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20),
+            borderSide: BorderSide(
+              width: 2.5,
+              color: AppColor.darkBlue,
             )),
       ),
     );
