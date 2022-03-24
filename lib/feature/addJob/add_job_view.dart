@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:jobjob/models/usermodel.dart';
 import 'package:jobjob/services/cloud_service.dart';
 
+import '../../product/components/app_string.dart';
 import '../../product/widgets/profile_text_form_fiel.dart';
 
 class AddJobView extends StatefulWidget {
@@ -31,7 +32,7 @@ class _AddJobViewState extends State<AddJobView> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("İŞ OLUŞTUR"),
+          title: Text(AppString.jobAdd),
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -55,29 +56,29 @@ class _AddJobViewState extends State<AddJobView> {
                       children: [
                         ProfileCustomTextFormField(
                             formFieldController: _jobNameController,
-                            hintText: "İş Tanımı",
+                            hintText: AppString.isTanimi,
                             focusNode: _jobNameNode),
                         ProfileCustomTextFormField(
                             formFieldController: _jobDetailController,
-                            hintText: "İş Detayı",
+                            hintText: AppString.isDetayi,
                             focusNode: _jobDetailNode),
                         ProfileCustomTextFormField(
                             formFieldController: _cityController,
-                            hintText: "İL",
+                            hintText: AppString.il,
                             focusNode: _cityNode),
                         ProfileCustomTextFormField(
                             formFieldController: _districtController,
-                            hintText: "SEMT",
+                            hintText: AppString.semt,
                             focusNode: _districtNode),
                         ProfileCustomTextFormField(
                             formFieldController: _addressController,
-                            hintText: "ADRES",
+                            hintText: AppString.adres,
                             focusNode: _addressNode),
                         ElevatedButton(
                             onPressed: () {
                               _isOlustur();
                             },
-                            child: const Text("Oluştur"),
+                            child: const Text(AppString.jobAdd),
                             style: ElevatedButton.styleFrom(
                                 shape: const RoundedRectangleBorder(
                                     borderRadius:

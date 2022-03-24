@@ -11,4 +11,16 @@ class AppString {
   static const registerMail = 'Email Adresiniz';
   static const registerPass = 'Şifreniz';
   static const regisAgainPass = 'Yeniden Şifreniz';
+  static const jobAdd = "İŞ OLUŞTUR";
+  static const isTanimi = "İş Tanımı";
+  static const isDetayi = "İş Detayı";
+  static const il = "İL";
+  static const semt = "SEMT";
+  static const adres = "ADRES";
+  static const ilanDetaylari = "İlan Detayları";
+  static const ilanTarihi = "İlan Tarihi:";
+  static const ilanTarihiGirilmedi = "İlan Tarihi Girilmedi";
+  static const ucret = "İlan Detayları";
+  static const cep = "İlan Detayları";
+  static const favoriler = "Favoriler";
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jobjob/models/homemodel.dart';
 import 'package:jobjob/models/usermodel.dart';
+import 'package:jobjob/product/components/app_string.dart';
 
 class DescriptionPageView extends StatelessWidget {
   final JobsModel job;
@@ -31,12 +32,12 @@ class DescriptionPageView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Text(
-                      "İlan Detayları",
+                      AppString.ilanDetaylari,
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     job.jobDate != null
-                        ? Text("İlan Tarihi: ${job.jobDate}")
-                        : Text("İlan Tarihi Girilmedi")
+                        ? Text("${AppString.ilanTarihi} ${job.jobDate}")
+                        : Text(AppString.ilanTarihiGirilmedi)
                   ],
                 ),
                 Row(
@@ -46,8 +47,9 @@ class DescriptionPageView extends StatelessWidget {
                       children: [
                         Text(
                             "${user.name} ${user.surname}"), //profilden gelicek
-                        Text("Fiyat : ${job.cost}"),
-                        Text("Cep: ${user.phoneNumber}"), //profilden gelicek
+                        Text("${AppString.ucret} ${job.cost}"),
+                        Text(
+                            "${AppString.cep} ${user.phoneNumber}"), //profilden gelicek
                         Text(job.address ?? ""),
                       ],
                     )
