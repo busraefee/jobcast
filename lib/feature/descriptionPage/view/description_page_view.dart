@@ -38,6 +38,7 @@ class _DescriptionPageViewState extends State<DescriptionPageView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: AppColor.white,
         appBar: AppBar(backgroundColor: AppColor.orange),
         body: isLoading
             ? SizedBox(
@@ -46,67 +47,91 @@ class _DescriptionPageViewState extends State<DescriptionPageView> {
                   padding: const EdgeInsets.all(8.0),
                   child: Card(
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          height: context.dynamicHeight(0.4),
-                          child: Image.network(
-                            widget.job.jobImage ?? "",
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: context.dynamicHeight(0.4),
+                            child: Image.network(
+                              widget.job.jobImage ?? "",
+                            ),
                           ),
-                        ),
-                        Text(widget.job.jobName ?? "",
-                            style: TextStyle(fontSize: 20),
-                            textAlign: TextAlign.end),
-                        SizedBox(
-                          height: context.lowValue,
-                        ),
-                        Text(widget.job.jobDetail ?? "",
-                            style: TextStyle(fontSize: 15)),
-                        const SizedBox(height: 40),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text(
-                              AppString.ilanDetaylari,
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            widget.job.jobDate != null
-                                ? Text(
-                                    "${AppString.ilanTarihi} ${widget.job.jobDate}")
-                                : Text(AppString.ilanTarihiGirilmedi)
-                          ],
-                        ),
-                        SizedBox(
-                          height: context.lowValue * 2,
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          Card(
+                            elevation: 7,
+                            child: Column(
                               children: [
-                                Text("${AppString.ucret} ${widget.job.cost}"),
-                                Text(
-                                  "${_user?.userName} ${_user?.userSurname}",
-                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                Container(
+                                    child: Column(
+                                      children: [
+                                        Text(widget.job.jobName ?? "",
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold),
+                                            textAlign: TextAlign.end),
+                                        SizedBox(
+                                          height: context.lowValue,
+                                        ),
+                                        Text(widget.job.jobDetail ?? "",
+                                            style: TextStyle(fontSize: 15)),
+                                      ],
+                                    ),
+                                    color: AppColor.white),
+                                const SizedBox(height: 40),
+                                Container(
+                                  color: AppColor.white,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Text(
+                                        AppString.ilanDetaylari,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      widget.job.jobDate != null
+                                          ? Text(
+                                              "${AppString.ilanTarihi} ${widget.job.jobDate}")
+                                          : Text(AppString.ilanTarihiGirilmedi)
+                                    ],
+                                  ),
                                 ),
+                                SizedBox(
+                                  height: context.lowValue * 2,
+                                ),
+                                Container(
+                                  color: AppColor.white,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Text(
+                                        "${_user?.userName} ${_user?.userSurname}",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Text(
+                                          "${AppString.ucret} ${widget.job.cost}"),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: context.lowValue * 2,
+                                ),
+                                Container(
+                                  color: AppColor.white,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Text(widget.job.address ?? ""),
+                                      Text(
+                                          "${AppString.cep} ${_user?.phoneNumber}")
+                                    ],
+                                  ),
+                                )
                               ],
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Text(widget.job.address ?? ""),
-                                Text("${AppString.cep} ${_user?.phoneNumber}")
-                              ],
-                            )
-                            //profilden gelicek
-
-                            //profilden gelicek
-                            ,
-                          ],
-                        ),
-                      ],
-                    ),
+                          ),
+                        ]),
                   ),
                 ),
               )
