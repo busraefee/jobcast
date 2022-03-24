@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:jobjob/models/homemodel.dart';
-import 'package:jobjob/models/usermodel.dart';
-import 'package:jobjob/services/cloud_service.dart';
+import 'package:jobjob/product/components/app_color.dart';
+import 'package:jobjob/product/components/app_string.dart';
+import '../../../models/homemodel.dart';
+import '../../../models/usermodel.dart';
+import '../../../services/cloud_service.dart';
 
 import '../../../product/widgets/custom_button_navigation.dart';
 import '../../../product/widgets/custom_card.dart';
@@ -51,8 +53,9 @@ class _HomePageState extends State<HomePage> {
               onRefresh: _getJobs,
               child: CustomScrollView(slivers: [
                 SliverAppBar(
+                  backgroundColor: Colors.transparent,
                   automaticallyImplyLeading: false,
-                  title: const Text("İŞ BUL"),
+                  title: const Text(AppString.homeTitle),
                   actions: [
                     Padding(
                         padding: EdgeInsets.only(right: 4),
@@ -61,9 +64,10 @@ class _HomePageState extends State<HomePage> {
                   ],
                   centerTitle: true,
                   pinned: true,
-                  expandedHeight: 200,
+                  expandedHeight: 100,
                   flexibleSpace: FlexibleSpaceBar(
-                    background: Image.network("https://picsum.photos/400/200"),
+                    background: Image.network(
+                        "https://img.freepik.com/free-photo/excited-asian-woman-showing-smartphone-app-triumphing-celebrating-mobile-phone-standing-yellow-background-copy-space_1258-93105.jpg?t=st=1648155565~exp=1648156165~hmac=25592b82ec8cfc719ad833513569c4feef7525d68570425c6dedfe3af8f10d44&w=1380"),
                   ),
                 ),
                 SliverList(
@@ -71,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                     JobsModel job = _jobsList[index];
 
                     return Padding(
-                      padding: EdgeInsets.all(8),
+                      padding: EdgeInsets.all(4),
                       child: SizedBox(
                         height: 120,
                         child: CustomCard(job: job),

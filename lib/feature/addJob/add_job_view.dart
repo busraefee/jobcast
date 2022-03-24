@@ -2,9 +2,10 @@ import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:jobjob/models/usermodel.dart';
-import 'package:jobjob/services/cloud_service.dart';
-import 'package:jobjob/services/storage_service.dart';
+import 'package:jobjob/product/components/app_color.dart';
+import '../../models/usermodel.dart';
+import '../../services/cloud_service.dart';
+import '../../services/storage_service.dart';
 
 import '../../product/components/app_string.dart';
 import '../../product/widgets/profile_text_form_fiel.dart';
@@ -46,6 +47,7 @@ class _AddJobViewState extends State<AddJobView> {
     return Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
+          backgroundColor: AppColor.orange,
           automaticallyImplyLeading: _isLoading,
           title: Text(AppString.jobAdd),
         ),
@@ -62,6 +64,7 @@ class _AddJobViewState extends State<AddJobView> {
                           : Image.network("https://picsum.photos/400/300"),
                     ),
                     IconButton(
+                        color: AppColor.darkgreen,
                         onPressed: () {
                           fromGalery();
                         },
@@ -109,6 +112,7 @@ class _AddJobViewState extends State<AddJobView> {
                                   },
                                   child: const Text(AppString.jobAdd),
                                   style: ElevatedButton.styleFrom(
+                                      primary: AppColor.darkgreen,
                                       shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(10)))))

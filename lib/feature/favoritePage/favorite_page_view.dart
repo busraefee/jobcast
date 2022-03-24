@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:jobjob/models/homemodel.dart';
-import 'package:jobjob/product/components/app_string.dart';
-import 'package:jobjob/services/cloud_service.dart';
+import 'package:jobjob/product/components/app_color.dart';
+import '../../models/homemodel.dart';
+import '../../product/components/app_string.dart';
+import '../../services/cloud_service.dart';
 
 class FavoriteView extends StatefulWidget {
   const FavoriteView({Key? key}) : super(key: key);
@@ -47,6 +48,7 @@ class _FavoriteViewState extends State<FavoriteView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColor.orange,
         title: Text(AppString.favoriler),
       ),
       body: RefreshIndicator(

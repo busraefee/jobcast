@@ -2,10 +2,11 @@ import 'dart:ui';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:jobjob/feature/login/view/login_view.dart';
-import 'package:jobjob/models/usermodel.dart';
-import 'package:jobjob/services/auth_service.dart';
-import 'package:jobjob/services/cloud_service.dart';
+import 'package:jobjob/product/components/app_color.dart';
+import '../../login/view/login_view.dart';
+import '../../../models/usermodel.dart';
+import '../../../services/auth_service.dart';
+import '../../../services/cloud_service.dart';
 
 import '../../../product/widgets/profile_custom_elevated_button.dart';
 
@@ -42,6 +43,7 @@ class _ProfilViewState extends State<ProfilView> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: AppColor.orange,
           title: Text("Profile"),
           actions: [
             IconButton(
@@ -62,7 +64,6 @@ class _ProfilViewState extends State<ProfilView> {
               const SizedBox(
                 height: 50,
               ),
-
               SizedBox(
                   height: 200,
                   width: 200,
@@ -81,11 +82,6 @@ class _ProfilViewState extends State<ProfilView> {
               CustomProfileElevatedButton(
                 user: widget.user,
               ),
-              /*IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.add_circle),
-                        tooltip: "Fotoğraf Ekle",
-                      ),*/
               SizedBox(
                 height: 20,
               ),
@@ -93,7 +89,6 @@ class _ProfilViewState extends State<ProfilView> {
                 "${widget.user.userName} ${widget.user.userSurname}",
                 style: TextStyle(fontSize: 20),
               ),
-              //Text("İstanbul/Beykoz/Rüzgarlıbahçe Mah."),
               SizedBox(
                 height: 20,
               ),
@@ -105,11 +100,29 @@ class _ProfilViewState extends State<ProfilView> {
                   itemCount: 5,
                   itemBuilder: (context, index) {
                     return Card(
-                      color: Colors.red,
+                      elevation: 8,
+                      color: AppColor.orange,
                       child: Column(
                         children: [
-                          Text("Kuzey Tekinoğlu"),
-                          Text("Kaliteli Bir Köpek gezdiricir kendisi"),
+                          const SizedBox(height: 80),
+                          const Text(
+                            "Kuzey Tekinoğlu",
+                            style:
+                                TextStyle(fontSize: 18, color: AppColor.white),
+                          ),
+                          Row(
+                            children: [
+                              const Icon(Icons.star),
+                              const Icon(Icons.star),
+                              const Icon(Icons.star),
+                              const Icon(Icons.star),
+                              const Icon(Icons.star),
+                              const SizedBox(
+                                height: 50,
+                              )
+                            ],
+                          ),
+                          const Text("Kaliteli Bir Köpek gezdiricir kendisi"),
                         ],
                       ),
                     );
@@ -119,7 +132,6 @@ class _ProfilViewState extends State<ProfilView> {
               SizedBox(
                 height: 60,
               ),
-              //Spacer(),
             ],
           ),
         ));

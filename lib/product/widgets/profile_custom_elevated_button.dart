@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jobjob/models/usermodel.dart';
+import 'package:jobjob/product/components/app_color.dart';
+import '../../models/usermodel.dart';
 
 import '../../feature/profil/view/edit_profile_view.dart';
 
@@ -22,6 +23,7 @@ class CustomProfileElevatedButton extends StatelessWidget {
       },
       child: Text("Profili Düzenle"),
       style: ElevatedButton.styleFrom(
+          primary: AppColor.darkgreen,
           maximumSize: MediaQuery.of(context).size * 0.8,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(10)))),

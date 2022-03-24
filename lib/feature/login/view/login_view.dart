@@ -1,12 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:jobjob/feature/homepage/view/home_page_view.dart';
-import 'package:jobjob/feature/login/view/home_view.dart';
-import 'package:jobjob/product/components/app_color.dart';
-import 'package:jobjob/product/components/app_string.dart';
-import 'package:jobjob/product/utils/validator/validator.dart';
-import 'package:jobjob/product/widgets/costum_form_field.dart';
-import 'package:jobjob/services/auth_service.dart';
+import 'package:jobjob/feature/login/view/register_view.dart';
+import '../../homepage/view/home_page_view.dart';
+import 'home_view.dart';
+import '../../../product/components/app_color.dart';
+import '../../../product/components/app_string.dart';
+import '../../../product/utils/validator/validator.dart';
+import '../../../product/widgets/costum_form_field.dart';
+import '../../../services/auth_service.dart';
 import 'package:kartal/kartal.dart';
 
 class LoginView extends StatefulWidget {
@@ -39,7 +40,7 @@ class _LoginViewState extends State<LoginView> {
         _focusPassword.unfocus();
       },
       child: Scaffold(
-        backgroundColor: AppColor.backColor,
+        backgroundColor: AppColor.white,
         body: FutureBuilder(
           future: Authentication().initializeFirebase(context: context),
           builder: (context, snapshot) {
@@ -55,7 +56,7 @@ class _LoginViewState extends State<LoginView> {
                         child: Text(
                           AppString.loginTitle,
                           style: context.textTheme.headline2?.copyWith(
-                            color: AppColor.darkBlue,
+                            color: AppColor.darkgreen,
                           ),
                         ),
                       ),
@@ -83,7 +84,7 @@ class _LoginViewState extends State<LoginView> {
                                 suffixIcon: IconButton(
                                   icon: const Icon(
                                     Icons.lock_outline,
-                                    color: AppColor.loginFormField,
+                                    color: AppColor.orange,
                                   ),
                                   onPressed: () {
                                     setState(() {
@@ -141,7 +142,7 @@ class _LoginViewState extends State<LoginView> {
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           20)),
-                                              primary: AppColor.darkBlue,
+                                              primary: AppColor.darkgreen,
                                               padding:
                                                   const EdgeInsets.symmetric(
                                                       horizontal: 50,
@@ -151,35 +152,23 @@ class _LoginViewState extends State<LoginView> {
                                         )
                                       ],
                                     ),
-                              /*ElevatedButton(
-                                onPressed: () async {
-                                  setState(() {
-                                    changeLoading();
-                                  });
-                                  User? user =
-                                      await Authentication().signInWithGoogle();
-                                  setState(() {
-                                    changeLoading();
-                                  });
-                                  if (user != null) {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                HomeView(user: user)));
-                                  }
+                              SizedBox(
+                                height: context.lowValue,
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => RegisterView(),
+                                      ));
                                 },
-                                child: Text("G"),
-                                style: ElevatedButton.styleFrom(
-                                    primary: AppColor.buttonREd,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(15)),
-                                    /*padding: const EdgeInsets.symmetric(
-                                            horizontal: context.paddingLow, vertical: context.paddingLow),*/
-                                    textStyle: context.textTheme.headline5
-                                        ?.copyWith(
-                                            fontWeight: FontWeight.bold)),
-                              ),*/
+                                child: Text(
+                                  AppString.kayitOl,
+                                  style: context.textTheme.bodyLarge
+                                      ?.copyWith(color: Colors.orange),
+                                ),
+                              )
                             ],
                           ),
                         ),
@@ -209,7 +198,7 @@ class _LoginViewState extends State<LoginView> {
                               },
                               child: Text("G"),
                               style: ElevatedButton.styleFrom(
-                                  primary: AppColor.buttonREd,
+                                  primary: AppColor.orange,
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(15)),
                                   padding: const EdgeInsets.symmetric(

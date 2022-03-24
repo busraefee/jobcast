@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:jobjob/feature/profil/view/edit_profile_view.dart';
-import 'package:jobjob/models/usermodel.dart';
-import 'package:jobjob/services/cloud_service.dart';
+import 'package:jobjob/product/components/app_color.dart';
+import 'package:jobjob/product/components/app_string.dart';
+import '../../feature/profil/view/edit_profile_view.dart';
+import '../../models/usermodel.dart';
+import '../../services/cloud_service.dart';
 
 import '../../feature/addJob/add_job_view.dart';
 import '../../feature/favoritePage/favorite_page_view.dart';
@@ -39,10 +41,10 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   Widget build(BuildContext context) {
     return isLoading
         ? BottomAppBar(
-            color: Colors.yellow,
+            color: AppColor.orange,
             shape: const CircularNotchedRectangle(),
             child: Container(
-                height: 80,
+                height: 60,
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -50,8 +52,8 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                     IconButton(
                       icon: const Icon(
                         Icons.grade,
-                        size: 40,
-                        color: Colors.black,
+                        size: 30,
+                        color: AppColor.white,
                       ),
                       onPressed: () {
                         Navigator.push(
@@ -63,9 +65,9 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                     ),
                     IconButton(
                       icon: const Icon(
-                        Icons.add_circle,
+                        Icons.add_sharp,
                         size: 40,
-                        color: Colors.black,
+                        color: AppColor.white,
                       ),
                       onPressed: () {
                         if (_user?.phoneNumber != null &&
@@ -79,13 +81,12 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                           Alert(
                             context: context,
                             type: AlertType.error,
-                            title: "Telefon Ekle",
-                            desc:
-                                "İlan oluşturabilmek için telefon numarası ekleyin!",
+                            title: AppString.telefonEkle,
+                            desc: AppString.noAllert,
                             buttons: [
                               DialogButton(
                                 child: const Text(
-                                  "Numara Ekle",
+                                  AppString.noEkle,
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 20),
                                 ),
@@ -102,7 +103,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                               DialogButton(
                                 color: Colors.red,
                                 child: const Text(
-                                  "Vazgeç",
+                                  AppString.vazgec,
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 20),
                                 ),
@@ -118,9 +119,9 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                     ),
                     IconButton(
                       icon: const Icon(
-                        Icons.account_circle,
-                        size: 40,
-                        color: Colors.black,
+                        Icons.person,
+                        size: 30,
+                        color: AppColor.white,
                       ),
                       onPressed: () {
                         Navigator.push(

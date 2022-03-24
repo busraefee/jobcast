@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:jobjob/feature/login/view/login_view.dart';
-import 'package:jobjob/models/homemodel.dart';
-import 'package:jobjob/services/cloud_service.dart';
+import 'login_view.dart';
+import '../../../models/homemodel.dart';
+import '../../../services/cloud_service.dart';
 
 class HomeView extends StatefulWidget {
   HomeView({Key? key, required this.user}) : super(key: key);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jobjob/product/components/app_color.dart';
+import '../components/app_color.dart';
 
 class CustomFormField extends StatefulWidget {
   const CustomFormField(
@@ -36,18 +36,18 @@ class _CustomFormFieldState extends State<CustomFormField> {
       decoration: InputDecoration(
         suffixIcon: widget.suffixIcon,
         labelText: widget.name,
-        labelStyle: const TextStyle(color: AppColor.loginText),
+        labelStyle: const TextStyle(color: AppColor.orange),
         border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
             borderSide: BorderSide(
-              color: AppColor.darkBlue,
+              color: AppColor.darkgreen,
               width: 5,
             )),
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20),
             borderSide: BorderSide(
               width: 2.5,
-              color: AppColor.darkBlue,
+              color: AppColor.darkgreen,
             )),
       ),
     );

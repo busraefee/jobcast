@@ -2,9 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:jobjob/models/usermodel.dart';
-import 'package:jobjob/services/cloud_service.dart';
-import 'package:jobjob/services/storage_service.dart';
+import 'package:jobjob/product/components/app_color.dart';
+import '../../../models/usermodel.dart';
+import '../../../services/cloud_service.dart';
+import '../../../services/storage_service.dart';
 
 import '../../../product/widgets/profile_text_form_fiel.dart';
 
@@ -42,6 +43,7 @@ class _EditProfileViewState extends State<EditProfileView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColor.orange,
         automaticallyImplyLeading: _isLoading,
         title: Text("Profili Düzenle"),
       ),
@@ -61,6 +63,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                             : "https://eurorot.com/wp-content/uploads/2020/11/no-imagen.png"),
                   ),
                   IconButton(
+                      color: AppColor.darkgreen,
                       onPressed: () {
                         fromGalery();
                       },
@@ -92,6 +95,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                                 },
                                 child: const Text("Kaydet"),
                                 style: ElevatedButton.styleFrom(
+                                    primary: AppColor.darkgreen,
                                     shape: const RoundedRectangleBorder(
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(10)))))

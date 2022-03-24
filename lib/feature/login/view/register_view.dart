@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:jobjob/feature/login/view/login_view.dart';
-import 'package:jobjob/product/components/app_color.dart';
-import 'package:jobjob/product/components/app_string.dart';
-import 'package:jobjob/product/utils/validator/validator.dart';
-import 'package:jobjob/product/widgets/costum_form_field.dart';
-import 'package:jobjob/services/auth_service.dart';
+import 'login_view.dart';
+import '../../../product/components/app_color.dart';
+import '../../../product/components/app_string.dart';
+import '../../../product/utils/validator/validator.dart';
+import '../../../product/widgets/costum_form_field.dart';
+import '../../../services/auth_service.dart';
 import 'package:kartal/kartal.dart';
 
 class RegisterView extends StatefulWidget {
@@ -48,7 +48,7 @@ class _RegisterViewState extends State<RegisterView> {
         _focusName.unfocus();
       },
       child: Scaffold(
-        backgroundColor: AppColor.backColor,
+        backgroundColor: AppColor.white,
         body: FutureBuilder(
           future: Authentication().initializeSignUp(context: context),
           builder: (context, snapshot) {
@@ -65,7 +65,7 @@ class _RegisterViewState extends State<RegisterView> {
                           child: Text(
                             AppString.registerTitle,
                             style: context.textTheme.headline2?.copyWith(
-                              color: AppColor.darkBlue,
+                              color: AppColor.darkgreen,
                             ),
                           ),
                         ),
@@ -112,7 +112,7 @@ class _RegisterViewState extends State<RegisterView> {
                                 suffixIcon: IconButton(
                                   icon: const Icon(
                                     Icons.lock_outline,
-                                    color: AppColor.loginFormField,
+                                    color: AppColor.orange,
                                   ),
                                   onPressed: () {
                                     setState(() {
@@ -136,7 +136,7 @@ class _RegisterViewState extends State<RegisterView> {
                                 suffixIcon: IconButton(
                                   icon: const Icon(
                                     Icons.lock_outline,
-                                    color: AppColor.loginFormField,
+                                    color: AppColor.orange,
                                   ),
                                   onPressed: () {
                                     setState(() {
@@ -189,7 +189,7 @@ class _RegisterViewState extends State<RegisterView> {
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           20)),
-                                              primary: AppColor.darkBlue,
+                                              primary: AppColor.darkgreen,
                                               padding:
                                                   const EdgeInsets.symmetric(
                                                       horizontal: 50,

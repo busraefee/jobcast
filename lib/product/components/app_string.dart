@@ -25,4 +25,10 @@ class AppString {
   static const jobTime = "İş süresi";
   static const cep = "Cep Telefonu: ";
   static const favoriler = "Favoriler";
+  static const kayitOl = "Kayıt Ol";
+  static const vazgec = "Vazgeç";
+  static const noEkle = "Numara Ekle";
+  static const noAllert = "İlan oluşturabilmek için telefon numarası ekleyin!";
+  static const telefonEkle = "Telefon Ekle.";
+  static const homeTitle = "İŞ BUL";
 }

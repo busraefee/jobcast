@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jobjob/product/components/app_color.dart';
 
 class ProfileCustomTextFormField extends StatefulWidget {
   final TextEditingController formFieldController;
@@ -22,13 +23,20 @@ class _ProfileCustomTextFormFieldState
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: TextFormField(
-        controller: widget.formFieldController,
-        focusNode: widget.focusNode,
-        decoration: InputDecoration(
-            hintText: widget.hintText, border: OutlineInputBorder()),
-      ),
-    );
+        padding: const EdgeInsets.all(8.0),
+        child: TextFormField(
+          controller: widget.formFieldController,
+          focusNode: widget.focusNode,
+          decoration: InputDecoration(
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(25.0),
+              borderSide: BorderSide(
+                color: AppColor.darkgreen,
+              ),
+            ),
+            hintText: widget.hintText,
+            border: OutlineInputBorder(),
+          ),
+        ));
   }
 }

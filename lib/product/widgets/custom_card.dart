@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:jobjob/models/homemodel.dart';
-import 'package:jobjob/models/usermodel.dart';
-import 'package:jobjob/services/cloud_service.dart';
+import 'package:jobjob/product/components/app_color.dart';
+import '../../models/homemodel.dart';
+import '../../models/usermodel.dart';
+import '../../services/cloud_service.dart';
 import 'package:kartal/kartal.dart';
 import '../../feature/descriptionPage/view/description_page_view.dart';
 import '../../feature/favoritePage/favorite_page_view.dart';
@@ -37,6 +38,8 @@ class _CustomCardState extends State<CustomCard> {
             ));
       },
       child: Card(
+        elevation: 8,
+        color: AppColor.white,
         child: Column(
           children: [
             ListTile(

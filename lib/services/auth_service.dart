@@ -2,10 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:jobjob/feature/homepage/view/home_page_view.dart';
-import 'package:jobjob/feature/login/view/home_view.dart';
+import '../feature/homepage/view/home_page_view.dart';
+import '../feature/login/view/home_view.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:jobjob/feature/login/view/login_view.dart';
+import '../feature/login/view/login_view.dart';
 
 class Authentication {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;

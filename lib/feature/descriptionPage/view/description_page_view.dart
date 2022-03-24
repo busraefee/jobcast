@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:jobjob/models/homemodel.dart';
-import 'package:jobjob/models/usermodel.dart';
-import 'package:jobjob/product/components/app_string.dart';
-import 'package:jobjob/services/cloud_service.dart';
+import 'package:jobjob/product/components/app_color.dart';
+import '../../../models/homemodel.dart';
+import '../../../models/usermodel.dart';
+import '../../../product/components/app_string.dart';
+import '../../../services/cloud_service.dart';
+import 'package:kartal/kartal.dart';
 
 class DescriptionPageView extends StatefulWidget {
   final JobsModel job;
@@ -36,7 +38,7 @@ class _DescriptionPageViewState extends State<DescriptionPageView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(backgroundColor: AppColor.orange),
         body: isLoading
             ? SizedBox(
                 height: MediaQuery.of(context).size.height * 0.8,
@@ -46,13 +48,20 @@ class _DescriptionPageViewState extends State<DescriptionPageView> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.network(
-                          widget.job.jobImage ?? "",
-                          fit: BoxFit.cover,
+                        SizedBox(
+                          height: context.dynamicHeight(0.4),
+                          child: Image.network(
+                            widget.job.jobImage ?? "",
+                          ),
                         ),
                         Text(widget.job.jobName ?? "",
+                            style: TextStyle(fontSize: 20),
                             textAlign: TextAlign.end),
-                        Text(widget.job.jobDetail ?? ""),
+                        SizedBox(
+                          height: context.lowValue,
+                        ),
+                        Text(widget.job.jobDetail ?? "",
+                            style: TextStyle(fontSize: 15)),
                         const SizedBox(height: 40),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -67,19 +76,33 @@ class _DescriptionPageViewState extends State<DescriptionPageView> {
                                 : Text(AppString.ilanTarihiGirilmedi)
                           ],
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                        SizedBox(
+                          height: context.lowValue * 2,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Column(
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                Text(
-                                    "${_user?.userName} ${_user?.userSurname}"), //profilden gelicek
                                 Text("${AppString.ucret} ${widget.job.cost}"),
                                 Text(
-                                    "${AppString.cep} ${_user?.phoneNumber}"), //profilden gelicek
+                                  "${_user?.userName} ${_user?.userSurname}",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
                                 Text(widget.job.address ?? ""),
+                                Text("${AppString.cep} ${_user?.phoneNumber}")
                               ],
                             )
+                            //profilden gelicek
+
+                            //profilden gelicek
+                            ,
                           ],
                         ),
                       ],

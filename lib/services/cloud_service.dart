@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:jobjob/models/homemodel.dart';
-import 'package:jobjob/models/usermodel.dart';
+import '../models/homemodel.dart';
+import '../models/usermodel.dart';
 
 class FireStoreServisi {
   final _firestore = FirebaseFirestore.instance;
