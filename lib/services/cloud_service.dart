@@ -50,6 +50,45 @@ class FireStoreServisi {
     return user;
   }
 
+  Future<void> addFav(JobsModel job) async {
+    _firestore
+        .collection('Person')
+        .doc(firebaseUser?.uid)
+        .collection('favorite')
+        .doc(job.id)
+        .set({
+      'jobName': job.jobName,
+      'jobDetail': job.jobDetail,
+      'jobImage': job.jobImage,
+      'jobCreateDate': job.jobCreateDate,
+    });
+  }
+
+  Future<List<JobsModel>> getFav() async {
+    QuerySnapshot snapshot = await _firestore
+        .collection('Person')
+        .doc(firebaseUser?.uid)
+        .collection('favorite')
+        //.orderBy('jobCreateDate', descending: true)
+        .get();
+    List<JobsModel> jobList =
+        snapshot.docs.map((doc) => JobsModel.dokumandanUret(doc)).toList();
+    return jobList;
+  }
+
+  Future<bool> checkStar(String id) async {
+    DocumentSnapshot<Map<String, dynamic>> snapshot = await _firestore
+        .collection('Person')
+        .doc(firebaseUser?.uid)
+        .collection('favorite')
+        .doc(id)
+        .get();
+    if (snapshot.exists) {
+      return true;
+    }
+    return false;
+  }
+
   /*Future<void> isOlustur2(
       {jobName, jobDetail, city, district, address, cost, jobImage}) async {
     await _firestore.collection('jobs').add({
