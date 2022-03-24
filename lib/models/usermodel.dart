@@ -2,15 +2,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserModel {
   final String? id;
-  final String? name;
-  final String? surname;
+  final String? userName;
+  final String? userSurname;
   final String? phoneNumber;
   final String? userPhoto;
 
   UserModel({
     required this.id,
-    required this.name,
-    required this.surname,
+    required this.userName,
+    required this.userSurname,
     required this.phoneNumber,
     required this.userPhoto,
   });
@@ -19,9 +19,9 @@ class UserModel {
     var docData = documentSnapshot.data();
     return UserModel(
       id: documentSnapshot.id,
-      name: docData['name'],
+      userName: docData['userName'],
       userPhoto: docData['userPhoto'],
-      surname: docData['surname'],
+      userSurname: docData['userSurname'],
       phoneNumber: docData!['phoneNumber'],
     );
   }

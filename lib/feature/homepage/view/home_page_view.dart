@@ -17,31 +17,27 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   bool isLoading = false;
   List<JobsModel> _jobsList = [];
-  UserModel? _user;
-  final firebaseUser = FirebaseAuth.instance.currentUser;
 
-  Future<void> getJobs() async {
+  Future<void> _getJobs() async {
     List<JobsModel> jobList = await FireStoreServisi().anasayfaGet();
     setState(() {
       _jobsList = jobList;
-      //isLoading = true;
+      isLoading = true;
     });
   }
 
-  Future<void> getUser() async {
-    UserModel user = await FireStoreServisi().getUser(firebaseUser!.uid);
+  Future<void> _getJobsFilter() async {
+    List<JobsModel> jobList = await FireStoreServisi().anasayfaGet();
     setState(() {
-      _user = user;
+      _jobsList = jobList;
       isLoading = true;
     });
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    getJobs();
-    getUser();
+    _getJobs();
   }
 
   @override
@@ -51,36 +47,40 @@ class _HomePageState extends State<HomePage> {
       //floatingActionButton: CustomFloatingActionButton(),
       //floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: isLoading
-          ? CustomScrollView(slivers: [
-              SliverAppBar(
-                title: const Text("İŞ BUL"),
-                actions: [
-                  Padding(
-                      padding: EdgeInsets.only(right: 4),
-                      child: IconButton(
-                          onPressed: () {}, icon: Icon(Icons.reorder)))
-                ],
-                centerTitle: true,
-                pinned: true,
-                expandedHeight: 200,
-                flexibleSpace: FlexibleSpaceBar(
-                  background: Image.network("https://picsum.photos/400/200"),
+          ? RefreshIndicator(
+              onRefresh: _getJobs,
+              child: CustomScrollView(slivers: [
+                SliverAppBar(
+                  automaticallyImplyLeading: false,
+                  title: const Text("İŞ BUL"),
+                  actions: [
+                    Padding(
+                        padding: EdgeInsets.only(right: 4),
+                        child: IconButton(
+                            onPressed: () {}, icon: Icon(Icons.reorder)))
+                  ],
+                  centerTitle: true,
+                  pinned: true,
+                  expandedHeight: 200,
+                  flexibleSpace: FlexibleSpaceBar(
+                    background: Image.network("https://picsum.photos/400/200"),
+                  ),
                 ),
-              ),
-              SliverList(
-                delegate: SliverChildBuilderDelegate((context, index) {
-                  JobsModel job = _jobsList[index];
-                  UserModel user = _user!;
-                  return Padding(
-                    padding: EdgeInsets.all(8),
-                    child: SizedBox(
-                      height: 100,
-                      child: CustomCard(job: job, user: user),
-                    ),
-                  );
-                }, childCount: _jobsList.length),
-              )
-            ])
+                SliverList(
+                  delegate: SliverChildBuilderDelegate((context, index) {
+                    JobsModel job = _jobsList[index];
+
+                    return Padding(
+                      padding: EdgeInsets.all(8),
+                      child: SizedBox(
+                        height: 120,
+                        child: CustomCard(job: job),
+                      ),
+                    );
+                  }, childCount: _jobsList.length),
+                )
+              ]),
+            )
           : const Center(child: CircularProgressIndicator()),
     );
   }

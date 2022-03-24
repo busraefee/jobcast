@@ -18,6 +18,17 @@ class FireStoreServisi {
     return jobList;
   }
 
+  Future<List<JobsModel>> anasayfaGetFilter(String city) async {
+    QuerySnapshot snapshot = await _firestore
+        .collection("jobs")
+        .orderBy('jobCreateDate', descending: true)
+        .where('city', isEqualTo: city)
+        .get();
+    List<JobsModel> jobList =
+        snapshot.docs.map((doc) => JobsModel.dokumandanUret(doc)).toList();
+    return jobList;
+  }
+
   Future<void> createJob(
       {jobName,
       jobCreator,
@@ -50,18 +61,38 @@ class FireStoreServisi {
     return user;
   }
 
+  void updateUser({
+    userId,
+    userName,
+    userSurname,
+    phoneNumber,
+    userPhoto,
+  }) {
+    _firestore.collection('Person').doc(userId).update({
+      'userName': userName,
+      'userSurname': userSurname,
+      'userPhoto': userPhoto,
+      'phoneNumber': phoneNumber,
+    });
+  }
+
   Future<void> addFav(JobsModel job) async {
-    _firestore
+    DocumentReference docRef = _firestore
         .collection('Person')
         .doc(firebaseUser?.uid)
         .collection('favorite')
-        .doc(job.id)
-        .set({
-      'jobName': job.jobName,
-      'jobDetail': job.jobDetail,
-      'jobImage': job.jobImage,
-      'jobCreateDate': job.jobCreateDate,
-    });
+        .doc(job.id);
+    DocumentSnapshot doc = await docRef.get();
+    if (doc.exists) {
+      doc.reference.delete();
+    } else {
+      docRef.set({
+        'jobName': job.jobName,
+        'jobDetail': job.jobDetail,
+        'jobImage': job.jobImage,
+        'jobCreateDate': job.jobCreateDate,
+      });
+    }
   }
 
   Future<List<JobsModel>> getFav() async {

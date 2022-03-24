@@ -37,97 +37,103 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
 
   @override
   Widget build(BuildContext context) {
-    return BottomAppBar(
-        color: Colors.yellow,
-        shape: const CircularNotchedRectangle(),
-        child: Container(
-            height: 80,
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                  icon: const Icon(
-                    Icons.grade,
-                    size: 40,
-                    color: Colors.black,
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FavoriteView(),
-                        ));
-                  },
-                ),
-                IconButton(
-                  icon: const Icon(
-                    Icons.add_circle,
-                    size: 40,
-                    color: Colors.black,
-                  ),
-                  onPressed: () {
-                    if (_user?.phoneNumber != null) {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => AddJobView(),
-                          ));
-                    } else {
-                      Alert(
-                        context: context,
-                        type: AlertType.error,
-                        title: "Telefon Ekle",
-                        desc:
-                            "İlan oluşturabilmek için telefon numarası ekleyin!",
-                        buttons: [
-                          DialogButton(
-                            child: const Text(
-                              "Numara Ekle",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 20),
-                            ),
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => EditProfileView(),
-                                  ));
-                            },
-                            width: 120,
-                          ),
-                          DialogButton(
-                            color: Colors.red,
-                            child: const Text(
-                              "Vazgeç",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 20),
-                            ),
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            width: 120,
-                          )
-                        ],
-                      ).show();
-                    }
-                  },
-                ),
-                IconButton(
-                  icon: const Icon(
-                    Icons.account_circle,
-                    size: 40,
-                    color: Colors.black,
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ProfilView(),
-                        ));
-                  },
-                ),
-              ],
-            )));
+    return isLoading
+        ? BottomAppBar(
+            color: Colors.yellow,
+            shape: const CircularNotchedRectangle(),
+            child: Container(
+                height: 80,
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      icon: const Icon(
+                        Icons.grade,
+                        size: 40,
+                        color: Colors.black,
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FavoriteView(),
+                            ));
+                      },
+                    ),
+                    IconButton(
+                      icon: const Icon(
+                        Icons.add_circle,
+                        size: 40,
+                        color: Colors.black,
+                      ),
+                      onPressed: () {
+                        if (_user?.phoneNumber != null &&
+                            _user?.phoneNumber != "") {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AddJobView(),
+                              ));
+                        } else {
+                          Alert(
+                            context: context,
+                            type: AlertType.error,
+                            title: "Telefon Ekle",
+                            desc:
+                                "İlan oluşturabilmek için telefon numarası ekleyin!",
+                            buttons: [
+                              DialogButton(
+                                child: const Text(
+                                  "Numara Ekle",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20),
+                                ),
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            EditProfileView(user: _user!),
+                                      ));
+                                },
+                                width: 120,
+                              ),
+                              DialogButton(
+                                color: Colors.red,
+                                child: const Text(
+                                  "Vazgeç",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20),
+                                ),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                width: 120,
+                              )
+                            ],
+                          ).show();
+                        }
+                      },
+                    ),
+                    IconButton(
+                      icon: const Icon(
+                        Icons.account_circle,
+                        size: 40,
+                        color: Colors.black,
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ProfilView(
+                                user: _user!,
+                              ),
+                            ));
+                      },
+                    ),
+                  ],
+                )))
+        : const Center(child: CircularProgressIndicator());
   }
 }

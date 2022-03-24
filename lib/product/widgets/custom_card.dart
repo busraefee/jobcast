@@ -9,9 +9,7 @@ import '../../feature/favoritePage/favorite_page_view.dart';
 
 class CustomCard extends StatefulWidget {
   final JobsModel job;
-  final UserModel user;
-  const CustomCard({Key? key, required this.job, required this.user})
-      : super(key: key);
+  const CustomCard({Key? key, required this.job}) : super(key: key);
 
   @override
   State<CustomCard> createState() => _CustomCardState();
@@ -22,9 +20,7 @@ class _CustomCardState extends State<CustomCard> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    getFav();
     checkFav();
   }
 
@@ -37,7 +33,6 @@ class _CustomCardState extends State<CustomCard> {
             MaterialPageRoute(
               builder: (context) => DescriptionPageView(
                 job: widget.job,
-                user: widget.user,
               ),
             ));
       },
@@ -87,6 +82,7 @@ class _CustomCardState extends State<CustomCard> {
 
   getFav() async {
     await FireStoreServisi().addFav(widget.job);
+    checkFav();
   }
 
   checkFav() async {

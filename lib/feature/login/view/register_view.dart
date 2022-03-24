@@ -18,11 +18,13 @@ class _RegisterViewState extends State<RegisterView> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _userSurnameController = TextEditingController();
   final TextEditingController _againpassController = TextEditingController();
   final _focusEmail = FocusNode();
   final _focusPassword = FocusNode();
   final _focusName = FocusNode();
   final _focusAgainPass = FocusNode();
+  final _focusSurname = FocusNode();
 
   Authentication _authService = Authentication();
 
@@ -78,6 +80,17 @@ class _RegisterViewState extends State<RegisterView> {
                                 controller: _nameController,
                                 inputType: TextInputType.text,
                                 name: AppString.registerName,
+                                validator: (value) =>
+                                    Validator().validateEmail(email: value),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              CustomFormField(
+                                focusnode: _focusSurname,
+                                controller: _userSurnameController,
+                                inputType: TextInputType.text,
+                                name: AppString.registerSurname,
                                 validator: (value) =>
                                     Validator().validateEmail(email: value),
                               ),
@@ -154,7 +167,9 @@ class _RegisterViewState extends State<RegisterView> {
                                                   .createPerson(
                                                       _nameController.text,
                                                       _emailController.text,
-                                                      _passwordController.text)
+                                                      _passwordController.text,
+                                                      _userSurnameController
+                                                          .text)
                                                   .then((value) {
                                                 return Navigator.push(
                                                     context,

@@ -42,6 +42,8 @@ dependencies:
   kartal: ^2.3.1
   google_fonts: ^2.3.1
   rflutter_alert: ^2.0.4
+  image_picker: ^0.8.4+11
+  uuid: ^3.0.6
 
 dev_dependencies:
   flutter_test:

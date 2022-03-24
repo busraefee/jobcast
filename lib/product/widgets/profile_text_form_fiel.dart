@@ -4,6 +4,7 @@ class ProfileCustomTextFormField extends StatefulWidget {
   final TextEditingController formFieldController;
   final String hintText;
   final FocusNode focusNode;
+
   const ProfileCustomTextFormField({
     Key? key,
     required this.formFieldController,
@@ -12,10 +13,12 @@ class ProfileCustomTextFormField extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<ProfileCustomTextFormField> createState() => _ProfileCustomTextFormFieldState();
+  State<ProfileCustomTextFormField> createState() =>
+      _ProfileCustomTextFormFieldState();
 }
 
-class _ProfileCustomTextFormFieldState extends State<ProfileCustomTextFormField> {
+class _ProfileCustomTextFormFieldState
+    extends State<ProfileCustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,9 +27,7 @@ class _ProfileCustomTextFormFieldState extends State<ProfileCustomTextFormField>
         controller: widget.formFieldController,
         focusNode: widget.focusNode,
         decoration: InputDecoration(
-          hintText: widget.hintText,
-          border: OutlineInputBorder()
-        ),
+            hintText: widget.hintText, border: OutlineInputBorder()),
       ),
     );
   }

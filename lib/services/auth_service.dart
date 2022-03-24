@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:jobjob/feature/homepage/view/home_page_view.dart';
 import 'package:jobjob/feature/login/view/home_view.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:jobjob/feature/login/view/login_view.dart';
@@ -23,7 +24,12 @@ class Authentication {
     return user;
   }
 
-  Future<User?> createPerson(String name, String email, String password) async {
+  Future<User?> createPerson(
+    String name,
+    String email,
+    String password,
+    String userSurname,
+  ) async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     var user = await _auth.createUserWithEmailAndPassword(
         email: email, password: password);
@@ -31,7 +37,7 @@ class Authentication {
     await _firestore
         .collection("Person")
         .doc(user.user!.uid)
-        .set({'userName': name, 'email': email});
+        .set({'userName': name, 'email': email, 'userSurname': userSurname});
 
     return user.user;
   }
@@ -111,10 +117,8 @@ class Authentication {
     User? user = FirebaseAuth.instance.currentUser;
 
     if (user != null) {
-      Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => HomeView(
-                user: user,
-              )));
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => HomePage()));
     }
     return firebaseApp;
   }

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:jobjob/models/usermodel.dart';
 
 import '../../feature/profil/view/edit_profile_view.dart';
 
 class CustomProfileElevatedButton extends StatelessWidget {
-  const CustomProfileElevatedButton({Key? key}) : super(key: key);
+  final UserModel user;
+  const CustomProfileElevatedButton({Key? key, required this.user})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,12 +15,16 @@ class CustomProfileElevatedButton extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => EditProfileView(),
+              builder: (context) => EditProfileView(
+                user: user,
+              ),
             ));
       },
       child: Text("Profili Düzenle"),
       style: ElevatedButton.styleFrom(
-          maximumSize: MediaQuery.of(context).size * 0.8, shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10)))),
+          maximumSize: MediaQuery.of(context).size * 0.8,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10)))),
     );
   }
 }
