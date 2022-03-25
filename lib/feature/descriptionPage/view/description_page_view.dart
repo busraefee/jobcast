@@ -38,105 +38,76 @@ class _DescriptionPageViewState extends State<DescriptionPageView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppColor.white,
+        backgroundColor: Colors.white,
         appBar: AppBar(backgroundColor: AppColor.orange),
         body: isLoading
-            ? SizedBox(
-                height: MediaQuery.of(context).size.height * 0.8,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Card(
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            height: context.dynamicHeight(0.4),
-                            child: Image.network(
-                              widget.job.jobImage ?? "",
-                            ),
-                          ),
-                          Card(
-                            elevation: 7,
-                            child: Column(
-                              children: [
-                                Container(
-                                    child: Column(
-                                      children: [
-                                        Text(widget.job.jobName ?? "",
-                                            style: const TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold),
-                                            textAlign: TextAlign.end),
-                                        SizedBox(
-                                          height: context.lowValue,
-                                        ),
-                                        Text(widget.job.jobDetail ?? "",
-                                            style:
-                                                const TextStyle(fontSize: 15)),
-                                      ],
-                                    ),
-                                    color: AppColor.white),
-                                const SizedBox(height: 40),
-                                Container(
-                                  color: AppColor.white,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      const Text(
-                                        AppString.ilanDetaylari,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      widget.job.jobDate != null
-                                          ? Text(
-                                              "${AppString.ilanTarihi} ${widget.job.jobDate}")
-                                          : const Text(
-                                              AppString.ilanTarihiGirilmedi)
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: context.lowValue * 2,
-                                ),
-                                Container(
-                                  color: AppColor.white,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Text(
-                                        "${_user?.userName} ${_user?.userSurname}",
-                                        style: const TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                          "${AppString.ucret} ${widget.job.cost}"),
-                                    ],
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: context.lowValue * 2,
-                                ),
-                                Container(
-                                  color: AppColor.white,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Text(widget.job.address ?? ""),
-                                      Text(
-                                          "${AppString.cep} ${_user?.phoneNumber}")
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ]),
+            ? Column(children: [
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: SizedBox(
+                    height: context.height * .4,
+                    width: context.width * .8,
+                    child: Image.network(
+                      widget.job.jobImage ?? "",
+                    ),
                   ),
                 ),
-              )
+                Padding(
+                  padding: context.paddingMedium,
+                  child: Column(
+                    children: [
+                      Text(widget.job.jobName ?? "",
+                          style: const TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.end),
+                      SizedBox(
+                        height: context.lowValue,
+                      ),
+                      Text(widget.job.jobDetail ?? "",
+                          style: const TextStyle(fontSize: 15)),
+                    ],
+                  ),
+                ),
+                DataTable(
+                  columns: <DataColumn>[
+                    const DataColumn(
+                      label: Text(
+                        "İsim: ",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    DataColumn(
+                      label: Text("${_user?.userName} ${_user?.userSurname}"),
+                    ),
+                  ],
+                  rows: <DataRow>[
+                    DataRow(
+                      cells: <DataCell>[
+                        const DataCell(
+                          Text("Ücret: "),
+                        ),
+                        DataCell(Text("${widget.job.cost}")),
+                      ],
+                    ),
+                    DataRow(
+                      cells: <DataCell>[
+                        const DataCell(
+                          Text(AppString.cep),
+                        ),
+                        DataCell(Text("${_user?.phoneNumber}")),
+                      ],
+                    ),
+                    DataRow(
+                      cells: <DataCell>[
+                        const DataCell(
+                          Text("Adres: "),
+                        ),
+                        DataCell(Text("${widget.job.address}")),
+                      ],
+                    ),
+                  ],
+                )
+              ])
             : const Center(child: CircularProgressIndicator()));
   }
 }
