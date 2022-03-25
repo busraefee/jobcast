@@ -33,8 +33,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: const CustomBottomNavigationBar(),
-      //floatingActionButton: CustomFloatingActionButton(),
-      //floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: isLoading
           ? RefreshIndicator(
               onRefresh: _getJobs,
@@ -50,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                   ],
                   centerTitle: true,
                   pinned: true,
-                  expandedHeight: 100,
+                  expandedHeight: 150,
                   flexibleSpace: FlexibleSpaceBar(
                     background: Image.network(
                         "https://img.freepik.com/free-photo/excited-asian-woman-showing-smartphone-app-triumphing-celebrating-mobile-phone-standing-yellow-background-copy-space_1258-93105.jpg?t=st=1648155565~exp=1648156165~hmac=25592b82ec8cfc719ad833513569c4feef7525d68570425c6dedfe3af8f10d44&w=1380"),
