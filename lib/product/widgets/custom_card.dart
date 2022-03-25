@@ -41,7 +41,9 @@ class _CustomCardState extends State<CustomCard> {
           children: [
             ListTile(
               leading: SizedBox(
-                  child: widget.job.jobImage != null
+               height: MediaQuery.of(context).size.height*0.8,
+               width: MediaQuery.of(context).size.width*0.2,
+                 child: widget.job.jobImage != null
                       ? Image.network(widget.job.jobImage ?? "")
                       : Image.network("https://picsum.photos/400/300")),
               title: Text(

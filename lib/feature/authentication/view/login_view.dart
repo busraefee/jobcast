@@ -47,9 +47,10 @@ class _LoginViewState extends State<LoginView> {
               return Padding(
                 padding: context.paddingMedium,
                 child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  child: ListView(
+                    shrinkWrap: true,
                     children: [
+                      SizedBox(height: context.height*0.05),
                       Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
@@ -59,12 +60,12 @@ class _LoginViewState extends State<LoginView> {
                           ),
                         ),
                       ),
+                      SizedBox(height: context.height*0.1,),
                       Form(
                         key: _formKey,
                         autovalidateMode: AutovalidateMode.always,
                         child: SingleChildScrollView(
-                          keyboardDismissBehavior:
-                              ScrollViewKeyboardDismissBehavior.manual,
+                          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.manual,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -73,8 +74,7 @@ class _LoginViewState extends State<LoginView> {
                                 controller: _emailController,
                                 inputType: TextInputType.emailAddress,
                                 name: AppString.loginMail,
-                                validator: (value) =>
-                                    Validator().validateEmail(email: value),
+                                validator: (value) => Validator().validateEmail(email: value),
                               ),
                               const SizedBox(
                                 height: 20,
@@ -96,16 +96,14 @@ class _LoginViewState extends State<LoginView> {
                                 controller: _passwordController,
                                 name: AppString.loginPass,
                                 inputType: TextInputType.visiblePassword,
-                                validator: (value) => Validator()
-                                    .validatePassword(password: value),
+                                validator: (value) => Validator().validatePassword(password: value),
                                 obscureText: true,
                               ),
                               const SizedBox(
                                 height: 10,
                               ),
                               _isLoading
-                                  ? const Center(
-                                      child: CircularProgressIndicator())
+                                  ? const Center(child: CircularProgressIndicator())
                                   : Row(
                                       children: [
                                         Expanded(
@@ -116,15 +114,8 @@ class _LoginViewState extends State<LoginView> {
                                               setState(() {
                                                 changeLoading();
                                               });
-                                              if (_formKey.currentState!
-                                                  .validate()) {
-                                                await Authentication()
-                                                    .mailSignIn(
-                                                        mail: _emailController
-                                                            .text,
-                                                        password:
-                                                            _passwordController
-                                                                .text);
+                                              if (_formKey.currentState!.validate()) {
+                                                await Authentication().mailSignIn(mail: _emailController.text, password: _passwordController.text);
                                               }
 
                                               setState(() {
@@ -133,20 +124,12 @@ class _LoginViewState extends State<LoginView> {
                                             },
                                             child: Text(
                                               AppString.loginButton,
-                                              style: context.textTheme.bodyLarge
-                                                  ?.copyWith(
-                                                      color: Colors.white),
+                                              style: context.textTheme.bodyLarge?.copyWith(color: Colors.white),
                                             ),
                                             style: ElevatedButton.styleFrom(
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          20)),
+                                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                                               primary: AppColor.darkgreen,
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 50,
-                                                      vertical: 20),
+                                              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                                             ),
                                           ),
                                         )
@@ -160,14 +143,12 @@ class _LoginViewState extends State<LoginView> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) =>
-                                            const RegisterView(),
+                                        builder: (context) => const RegisterView(),
                                       ));
                                 },
                                 child: Text(
                                   AppString.kayitOl,
-                                  style: context.textTheme.bodyLarge
-                                      ?.copyWith(color: Colors.orange),
+                                  style: context.textTheme.bodyLarge?.copyWith(color: Colors.orange),
                                 ),
                               )
                             ],
@@ -175,37 +156,30 @@ class _LoginViewState extends State<LoginView> {
                         ),
                       ),
                       FutureBuilder(
-                        future: Authentication()
-                            .initializeFirebase(context: context),
+                        future: Authentication().initializeFirebase(context: context),
                         builder: (context, snapshot) {
                           if (snapshot.hasError) {
                             return const Text('hata varrr');
-                          } else if (snapshot.connectionState ==
-                              ConnectionState.done) {
+                          } else if (snapshot.connectionState == ConnectionState.done) {
                             return ElevatedButton(
                               onPressed: () async {
                                 setState(() {
                                   changeLoading();
                                 });
-                                User? user =
-                                    await Authentication().signInWithGoogle();
+                                User? user = await Authentication().signInWithGoogle();
                                 setState(() {
                                   changeLoading();
                                 });
                                 if (user != null) {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => const HomePage()));
+                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const HomePage()));
                                 }
                               },
                               child: const Text("G"),
                               style: ElevatedButton.styleFrom(
                                   primary: AppColor.orange,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(15)),
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 30, vertical: 20),
-                                  textStyle: context.textTheme.headline5
-                                      ?.copyWith(fontWeight: FontWeight.bold)),
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                                  padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                                  textStyle: context.textTheme.headline5?.copyWith(fontWeight: FontWeight.bold)),
                             );
                           }
                           return const CircularProgressIndicator();
