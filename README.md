@@ -14,14 +14,12 @@ Kullandığımız Paketler:
   - lottie: ^1.2.2
 
 
-
 JobCast, adresine yakın işleri görebileceğin, yaptırmak istediğin işler için ilan verebileceğin kullanışlı bir kısa süreli iş bulma uygulamasıdır.
 
 ## Uygulamanın Arayüzü
 
-<img width="270" height="480" src="https://user-images.githubusercontent.com/58303242/160096442-b05bd247-ac87-40e4-99de-8b35668efe0b.png">    <img width="270" height="480" src="https://user-images.githubusercontent.com/58303242/160096635-c84237d5-d567-4f22-bfbf-197547144104.png">
 
-<img width="254" height="520" src="https://user-images.githubusercontent.com/58303242/160096938-7253d56e-4779-45ab-96fa-fd2c55f0394a.png">    <img width="254" height="520" src="https://user-images.githubusercontent.com/58303242/160096950-b28b8e05-c788-4f08-9043-35c36d622e8b.png">
+https://user-images.githubusercontent.com/58303242/160214099-f81c16d4-96bf-4b4f-b6cf-9e1324376756.mp4
 
 
 Projenin ayrıntılı anlatımına şuradan ulaşabilirsiniz:
