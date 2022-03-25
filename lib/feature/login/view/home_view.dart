@@ -1,11 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 import 'login_view.dart';
-import '../../../models/homemodel.dart';
-import '../../../services/cloud_service.dart';
 
 class HomeView extends StatefulWidget {
-  HomeView({Key? key, required this.user}) : super(key: key);
+  const HomeView({Key? key, required this.user}) : super(key: key);
   final User user;
 
   @override
@@ -35,11 +34,11 @@ class _HomeViewState extends State<HomeView> {
                 ElevatedButton(
                     onPressed: () async {
                       await FirebaseAuth.instance.signOut();
-                      print('${FirebaseAuth.instance.currentUser.toString()}');
-                      Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (context) => LoginView()));
+
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => const LoginView()));
                     },
-                    child: Text('SIGN OUT'))
+                    child: const Text('SIGN OUT'))
               ],
             ))
           : const Center(

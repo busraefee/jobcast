@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:jobjob/product/components/app_color.dart';
+import '../../../product/components/app_color.dart';
 import '../../../models/usermodel.dart';
 import '../../../services/cloud_service.dart';
 import '../../../services/storage_service.dart';
@@ -11,7 +11,7 @@ import '../../../product/widgets/profile_text_form_fiel.dart';
 
 class EditProfileView extends StatefulWidget {
   final UserModel user;
-  EditProfileView({Key? key, required this.user}) : super(key: key);
+  const EditProfileView({Key? key, required this.user}) : super(key: key);
 
   @override
   State<EditProfileView> createState() => _EditProfileViewState();
@@ -25,7 +25,6 @@ class _EditProfileViewState extends State<EditProfileView> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _surnameController = TextEditingController();
   final TextEditingController _phoneNumberController = TextEditingController();
-  final TextEditingController _userPhotoController = TextEditingController();
 
   final FocusNode _nameNode = FocusNode();
   final FocusNode _surnameNode = FocusNode();
@@ -36,7 +35,6 @@ class _EditProfileViewState extends State<EditProfileView> {
     _nameController.text = widget.user.userName!;
     _surnameController.text = widget.user.userSurname!;
     _phoneNumberController.text = widget.user.phoneNumber ?? "";
-    //_userPhotoController.text = widget.user.userPhoto ?? "";
   }
 
   @override
@@ -45,13 +43,13 @@ class _EditProfileViewState extends State<EditProfileView> {
       appBar: AppBar(
         backgroundColor: AppColor.orange,
         automaticallyImplyLeading: _isLoading,
-        title: Text("Profili Düzenle"),
+        title: const Text("Profili Düzenle"),
       ),
       body: _isLoading
           ? SingleChildScrollView(
               child: Column(
                 children: [
-                  Container(
+                  SizedBox(
                     //color: Colors.red,
                     height: 200,
                     width: 200,
@@ -149,12 +147,6 @@ class _EditProfileViewState extends State<EditProfileView> {
             ? ""
             : profilePhotoUrl,
       );
-      print(_nameController.text);
-      print(_phoneNumberController.text);
-      print(
-        _surnameController.text,
-      );
-      print(profilePhotoUrl);
       setState(() {
         _isLoading = true;
       });

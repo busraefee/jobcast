@@ -1,13 +1,9 @@
-import 'dart:ui';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:jobjob/product/components/app_color.dart';
+import '../../../product/components/app_color.dart';
 import '../../login/view/login_view.dart';
 import '../../../models/usermodel.dart';
 import '../../../services/auth_service.dart';
-import '../../../services/cloud_service.dart';
-
 import '../../../product/widgets/profile_custom_elevated_button.dart';
 
 class ProfilView extends StatefulWidget {
@@ -44,16 +40,16 @@ class _ProfilViewState extends State<ProfilView> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: AppColor.orange,
-          title: Text("Profile"),
+          title: const Text("Profile"),
           actions: [
             IconButton(
                 onPressed: () {
                   Authentication().signOut().then((value) {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => LoginView()));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const LoginView()));
                   });
                 },
-                icon: Icon(Icons.outbond))
+                icon: const Icon(Icons.outbond))
           ],
         ),
         body: Center(
@@ -72,24 +68,24 @@ class _ProfilViewState extends State<ProfilView> {
                     backgroundImage: widget.user.userPhoto != null &&
                             widget.user.userPhoto != ""
                         ? NetworkImage("${widget.user.userPhoto}")
-                        : NetworkImage(
+                        : const NetworkImage(
                             "https://eurorot.com/wp-content/uploads/2020/11/no-imagen.png"),
                     maxRadius: 50,
                   )),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               CustomProfileElevatedButton(
                 user: widget.user,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Text(
                 "${widget.user.userName} ${widget.user.userSurname}",
-                style: TextStyle(fontSize: 20),
+                style: const TextStyle(fontSize: 20),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Expanded(
@@ -111,14 +107,14 @@ class _ProfilViewState extends State<ProfilView> {
                                 TextStyle(fontSize: 18, color: AppColor.white),
                           ),
                           Row(
-                            children: [
-                              const Icon(Icons.star),
-                              const Icon(Icons.star),
-                              const Icon(Icons.star),
-                              const Icon(Icons.star),
-                              const Icon(Icons.star),
-                              const SizedBox(
-                                height: 50,
+                            children: const [
+                              Icon(Icons.star),
+                              Icon(Icons.star),
+                              Icon(Icons.star),
+                              Icon(Icons.star),
+                              Icon(Icons.star),
+                              SizedBox(
+                                height: 20,
                               )
                             ],
                           ),
@@ -129,7 +125,7 @@ class _ProfilViewState extends State<ProfilView> {
                   },
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 60,
               ),
             ],

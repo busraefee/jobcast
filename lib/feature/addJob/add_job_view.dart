@@ -1,9 +1,6 @@
 import 'dart:io';
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:jobjob/product/components/app_color.dart';
-import '../../models/usermodel.dart';
+import '../../product/components/app_color.dart';
 import '../../services/cloud_service.dart';
 import '../../services/storage_service.dart';
 
@@ -12,7 +9,7 @@ import '../../product/widgets/profile_text_form_fiel.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AddJobView extends StatefulWidget {
-  AddJobView({Key? key}) : super(key: key);
+  const AddJobView({Key? key}) : super(key: key);
 
   @override
   State<AddJobView> createState() => _AddJobViewState();
@@ -30,7 +27,7 @@ class _AddJobViewState extends State<AddJobView> {
   final TextEditingController _addressController = TextEditingController();
   final TextEditingController _costController = TextEditingController();
   final TextEditingController _jobTimeController = TextEditingController();
-  TextEditingController _jobImageController = TextEditingController();
+  final TextEditingController _jobImageController = TextEditingController();
 
   final FocusNode _jobNameNode = FocusNode();
   final FocusNode _jobDetailNode = FocusNode();
@@ -39,7 +36,6 @@ class _AddJobViewState extends State<AddJobView> {
   final FocusNode _addressNode = FocusNode();
   final FocusNode _costNode = FocusNode();
   final FocusNode _jobTimeNode = FocusNode();
-  final FocusNode _jobImageNode = FocusNode();
 
   File? file;
   @override
@@ -49,13 +45,13 @@ class _AddJobViewState extends State<AddJobView> {
         appBar: AppBar(
           backgroundColor: AppColor.orange,
           automaticallyImplyLeading: _isLoading,
-          title: Text(AppString.jobAdd),
+          title: const Text(AppString.jobAdd),
         ),
         body: _isLoading
             ? SingleChildScrollView(
                 child: Column(
                   children: [
-                    Container(
+                    SizedBox(
                       //color: Colors.red,
                       height: 200,
                       width: 200,
@@ -139,18 +135,16 @@ class _AddJobViewState extends State<AddJobView> {
           : _jobImageController.text = "";
       await FireStoreServisi()
           .createJob(
-        jobName: _jobNameController.text,
-        jobDetail: _jobDetailController.text,
-        city: _cityController.text,
-        district: _districtController.text,
-        address: _addressController.text,
-        jobTime: _jobTimeController.text,
-        cost: _costController.text,
-        jobImage: _jobImageController.text,
-      )
-          .catchError((err) {
-        print(err);
-      });
+            jobName: _jobNameController.text,
+            jobDetail: _jobDetailController.text,
+            city: _cityController.text,
+            district: _districtController.text,
+            address: _addressController.text,
+            jobTime: _jobTimeController.text,
+            cost: _costController.text,
+            jobImage: _jobImageController.text,
+          )
+          .catchError((err) {});
     }
     setState(() {
       _isLoading = true;

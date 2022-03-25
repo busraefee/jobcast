@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jobjob/product/components/app_color.dart';
+import '../../product/components/app_color.dart';
 import '../../models/homemodel.dart';
 import '../../product/components/app_string.dart';
 import '../../services/cloud_service.dart';
@@ -49,7 +49,7 @@ class _FavoriteViewState extends State<FavoriteView> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColor.orange,
-        title: Text(AppString.favoriler),
+        title: const Text(AppString.favoriler),
       ),
       body: RefreshIndicator(
         onRefresh: getFavList,
@@ -67,7 +67,7 @@ class _FavoriteViewState extends State<FavoriteView> {
                   onPressed: () {
                     getFav(job);
                   },
-                  icon: Icon(Icons.star),
+                  icon: const Icon(Icons.star),
                 ),
                 iconColor: Colors.yellow,
               ),

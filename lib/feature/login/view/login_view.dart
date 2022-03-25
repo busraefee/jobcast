@@ -1,8 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:jobjob/feature/login/view/register_view.dart';
+import 'register_view.dart';
 import '../../homepage/view/home_page_view.dart';
-import 'home_view.dart';
 import '../../../product/components/app_color.dart';
 import '../../../product/components/app_string.dart';
 import '../../../product/utils/validator/validator.dart';
@@ -11,7 +10,7 @@ import '../../../services/auth_service.dart';
 import 'package:kartal/kartal.dart';
 
 class LoginView extends StatefulWidget {
-  LoginView({Key? key}) : super(key: key);
+  const LoginView({Key? key}) : super(key: key);
 
   @override
   State<LoginView> createState() => _LoginViewState();
@@ -105,7 +104,8 @@ class _LoginViewState extends State<LoginView> {
                                 height: 10,
                               ),
                               _isLoading
-                                  ? CircularProgressIndicator()
+                                  ? const Center(
+                                      child: CircularProgressIndicator())
                                   : Row(
                                       children: [
                                         Expanded(
@@ -118,7 +118,7 @@ class _LoginViewState extends State<LoginView> {
                                               });
                                               if (_formKey.currentState!
                                                   .validate()) {
-                                                User? user = await Authentication()
+                                                await Authentication()
                                                     .mailSignIn(
                                                         mail: _emailController
                                                             .text,
@@ -160,7 +160,8 @@ class _LoginViewState extends State<LoginView> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => RegisterView(),
+                                        builder: (context) =>
+                                            const RegisterView(),
                                       ));
                                 },
                                 child: Text(
@@ -178,7 +179,7 @@ class _LoginViewState extends State<LoginView> {
                             .initializeFirebase(context: context),
                         builder: (context, snapshot) {
                           if (snapshot.hasError) {
-                            return Text('hata varrr');
+                            return const Text('hata varrr');
                           } else if (snapshot.connectionState ==
                               ConnectionState.done) {
                             return ElevatedButton(
@@ -193,10 +194,10 @@ class _LoginViewState extends State<LoginView> {
                                 });
                                 if (user != null) {
                                   Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => HomePage()));
+                                      builder: (context) => const HomePage()));
                                 }
                               },
-                              child: Text("G"),
+                              child: const Text("G"),
                               style: ElevatedButton.styleFrom(
                                   primary: AppColor.orange,
                                   shape: RoundedRectangleBorder(
@@ -207,7 +208,7 @@ class _LoginViewState extends State<LoginView> {
                                       ?.copyWith(fontWeight: FontWeight.bold)),
                             );
                           }
-                          return CircularProgressIndicator();
+                          return const CircularProgressIndicator();
                         },
                       )
                     ],
@@ -215,7 +216,7 @@ class _LoginViewState extends State<LoginView> {
                 ),
               );
             }
-            return SizedBox();
+            return const SizedBox();
           },
         ),
       ),

@@ -1,10 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
 import '../feature/homepage/view/home_page_view.dart';
-import '../feature/login/view/home_view.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import '../feature/login/view/login_view.dart';
 
 class Authentication {
@@ -18,9 +18,7 @@ class Authentication {
       UserCredential userCredential = await auth.signInWithEmailAndPassword(
           email: mail, password: password);
       user = userCredential.user;
-    } on FirebaseAuthException catch (e) {
-      print(e.message.toString());
-    }
+    } on FirebaseAuthException catch (e) {}
     return user;
   }
 
@@ -56,13 +54,8 @@ class Authentication {
       user = userCredential.user;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
-      } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
-      }
-    } catch (e) {
-      print(e);
-    }
+      } else if (e.code == 'email-already-in-use') {}
+    } catch (e) {}
 
     return user;
   }
@@ -87,7 +80,7 @@ class Authentication {
             await auth.signInWithCredential(credential);
         user = userCredential.user;
       } on FirebaseAuthException catch (e) {
-        print(e.message.toString());
+        print(e);
       }
     }
     return user;
@@ -118,7 +111,7 @@ class Authentication {
 
     if (user != null) {
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => HomePage()));
+          .push(MaterialPageRoute(builder: (context) => const HomePage()));
     }
     return firebaseApp;
   }
@@ -130,7 +123,7 @@ class Authentication {
 
     if (user != null) {
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => LoginView()));
+          .push(MaterialPageRoute(builder: (context) => const LoginView()));
     }
     return firebaseApp;
   }

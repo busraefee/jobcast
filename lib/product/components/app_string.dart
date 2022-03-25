@@ -30,5 +30,4 @@ class AppString {
   static const noEkle = "Numara Ekle";
   static const noAllert = "İlan oluşturabilmek için telefon numarası ekleyin!";
   static const telefonEkle = "Telefon Ekle.";
-  static const homeTitle = "İŞ BUL";
 }

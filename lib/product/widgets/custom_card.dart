@@ -1,12 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:jobjob/product/components/app_color.dart';
+import '../components/app_color.dart';
 import '../../models/homemodel.dart';
-import '../../models/usermodel.dart';
 import '../../services/cloud_service.dart';
 import 'package:kartal/kartal.dart';
 import '../../feature/descriptionPage/view/description_page_view.dart';
-import '../../feature/favoritePage/favorite_page_view.dart';
 
 class CustomCard extends StatefulWidget {
   final JobsModel job;
@@ -57,14 +54,9 @@ class _CustomCardState extends State<CustomCard> {
               ),
               trailing: IconButton(
                   onPressed: () {
-                    /* Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FavoriteView(),
-                        ));*/
-                    getFav(); //kontrol et favlanmışsa kaldır değilse ekle
+                    getFav();
                   },
-                  icon: Icon(Icons.star)),
+                  icon: const Icon(Icons.star)),
               iconColor: starLight ? Colors.yellow : Colors.grey,
             ),
             Padding(

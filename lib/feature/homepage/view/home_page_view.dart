@@ -1,13 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:jobjob/product/components/app_color.dart';
-import 'package:jobjob/product/components/app_string.dart';
 import '../../../models/homemodel.dart';
-import '../../../models/usermodel.dart';
-import '../../../services/cloud_service.dart';
-
 import '../../../product/widgets/custom_button_navigation.dart';
 import '../../../product/widgets/custom_card.dart';
+import '../../../services/cloud_service.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -28,14 +23,6 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  Future<void> _getJobsFilter() async {
-    List<JobsModel> jobList = await FireStoreServisi().anasayfaGet();
-    setState(() {
-      _jobsList = jobList;
-      isLoading = true;
-    });
-  }
-
   @override
   void initState() {
     super.initState();
@@ -45,7 +32,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: CustomBottomNavigationBar(),
+      bottomNavigationBar: const CustomBottomNavigationBar(),
       //floatingActionButton: CustomFloatingActionButton(),
       //floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: isLoading
@@ -55,12 +42,11 @@ class _HomePageState extends State<HomePage> {
                 SliverAppBar(
                   backgroundColor: Colors.transparent,
                   automaticallyImplyLeading: false,
-                  title: const Text(AppString.homeTitle),
                   actions: [
                     Padding(
-                        padding: EdgeInsets.only(right: 4),
+                        padding: const EdgeInsets.only(right: 4),
                         child: IconButton(
-                            onPressed: () {}, icon: Icon(Icons.reorder)))
+                            onPressed: () {}, icon: const Icon(Icons.reorder)))
                   ],
                   centerTitle: true,
                   pinned: true,
@@ -75,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                     JobsModel job = _jobsList[index];
 
                     return Padding(
-                      padding: EdgeInsets.all(4),
+                      padding: const EdgeInsets.all(4),
                       child: SizedBox(
                         height: 120,
                         child: CustomCard(job: job),

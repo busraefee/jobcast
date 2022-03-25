@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:jobjob/product/components/app_color.dart';
+import '../../../product/components/app_color.dart';
 import '../../../models/homemodel.dart';
 import '../../../models/usermodel.dart';
 import '../../../product/components/app_string.dart';
@@ -9,7 +9,7 @@ import 'package:kartal/kartal.dart';
 
 class DescriptionPageView extends StatefulWidget {
   final JobsModel job;
-  DescriptionPageView({Key? key, required this.job}) : super(key: key);
+  const DescriptionPageView({Key? key, required this.job}) : super(key: key);
 
   @override
   State<DescriptionPageView> createState() => _DescriptionPageViewState();
@@ -63,7 +63,7 @@ class _DescriptionPageViewState extends State<DescriptionPageView> {
                                     child: Column(
                                       children: [
                                         Text(widget.job.jobName ?? "",
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontSize: 20,
                                                 fontWeight: FontWeight.bold),
                                             textAlign: TextAlign.end),
@@ -71,7 +71,8 @@ class _DescriptionPageViewState extends State<DescriptionPageView> {
                                           height: context.lowValue,
                                         ),
                                         Text(widget.job.jobDetail ?? "",
-                                            style: TextStyle(fontSize: 15)),
+                                            style:
+                                                const TextStyle(fontSize: 15)),
                                       ],
                                     ),
                                     color: AppColor.white),
@@ -82,7 +83,7 @@ class _DescriptionPageViewState extends State<DescriptionPageView> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
                                     children: [
-                                      Text(
+                                      const Text(
                                         AppString.ilanDetaylari,
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
@@ -90,7 +91,8 @@ class _DescriptionPageViewState extends State<DescriptionPageView> {
                                       widget.job.jobDate != null
                                           ? Text(
                                               "${AppString.ilanTarihi} ${widget.job.jobDate}")
-                                          : Text(AppString.ilanTarihiGirilmedi)
+                                          : const Text(
+                                              AppString.ilanTarihiGirilmedi)
                                     ],
                                   ),
                                 ),
@@ -105,7 +107,7 @@ class _DescriptionPageViewState extends State<DescriptionPageView> {
                                     children: [
                                       Text(
                                         "${_user?.userName} ${_user?.userSurname}",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontWeight: FontWeight.bold),
                                       ),
                                       Text(

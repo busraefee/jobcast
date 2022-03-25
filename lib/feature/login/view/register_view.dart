@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'login_view.dart';
+import 'package:kartal/kartal.dart';
+
 import '../../../product/components/app_color.dart';
 import '../../../product/components/app_string.dart';
 import '../../../product/utils/validator/validator.dart';
 import '../../../product/widgets/costum_form_field.dart';
 import '../../../services/auth_service.dart';
-import 'package:kartal/kartal.dart';
+import 'login_view.dart';
 
 class RegisterView extends StatefulWidget {
-  RegisterView({Key? key}) : super(key: key);
+  const RegisterView({Key? key}) : super(key: key);
 
   @override
   State<RegisterView> createState() => _RegisterViewState();
@@ -26,7 +27,7 @@ class _RegisterViewState extends State<RegisterView> {
   final _focusAgainPass = FocusNode();
   final _focusSurname = FocusNode();
 
-  Authentication _authService = Authentication();
+  final Authentication _authService = Authentication();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -157,7 +158,7 @@ class _RegisterViewState extends State<RegisterView> {
                                 height: 20,
                               ),
                               _isLoading
-                                  ? CircularProgressIndicator()
+                                  ? const CircularProgressIndicator()
                                   : Row(
                                       children: [
                                         Expanded(
@@ -175,7 +176,7 @@ class _RegisterViewState extends State<RegisterView> {
                                                     context,
                                                     MaterialPageRoute(
                                                         builder: (context) =>
-                                                            LoginView()));
+                                                            const LoginView()));
                                               });
                                             },
                                             child: Text(
@@ -208,7 +209,7 @@ class _RegisterViewState extends State<RegisterView> {
                 ),
               );
             }
-            return SizedBox();
+            return const SizedBox();
           },
         ),
       ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jobjob/product/components/app_color.dart';
+import '../components/app_color.dart';
 
 class ProfileCustomTextFormField extends StatefulWidget {
   final TextEditingController formFieldController;
@@ -30,12 +30,12 @@ class _ProfileCustomTextFormFieldState
           decoration: InputDecoration(
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(25.0),
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                 color: AppColor.darkgreen,
               ),
             ),
             hintText: widget.hintText,
-            border: OutlineInputBorder(),
+            border: const OutlineInputBorder(),
           ),
         ));
   }
