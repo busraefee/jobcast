@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:jobjob/product/models/usermodel.dart';
 import '../components/app_color.dart';
-import '../../models/usermodel.dart';
-
 import '../../feature/profil/view/edit_profile_view.dart';
 
 class CustomProfileElevatedButton extends StatelessWidget {

@@ -1,12 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:jobjob/product/models/usermodel.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-
 import '../../feature/addJob/add_job_view.dart';
 import '../../feature/favoritePage/favorite_page_view.dart';
 import '../../feature/profil/view/edit_profile_view.dart';
 import '../../feature/profil/view/profil_view.dart';
-import '../../models/usermodel.dart';
 import '../../services/cloud_service.dart';
 import '../components/app_color.dart';
 import '../components/app_string.dart';

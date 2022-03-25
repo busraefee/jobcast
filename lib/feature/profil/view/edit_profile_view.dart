@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:jobjob/product/models/usermodel.dart';
 import '../../../product/components/app_color.dart';
-import '../../../models/usermodel.dart';
 import '../../../services/cloud_service.dart';
 import '../../../services/storage_service.dart';
 

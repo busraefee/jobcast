@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../models/homemodel.dart';
+import 'package:jobjob/product/models/jobmodel.dart';
 import '../../../product/widgets/custom_button_navigation.dart';
 import '../../../product/widgets/custom_card.dart';
 import '../../../services/cloud_service.dart';

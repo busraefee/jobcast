@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../login/view/login_view.dart';
+import 'package:jobjob/feature/authentication/view/login_view.dart';
 import '../model/onboard_model.dart';
 import '../../../product/components/app_color.dart';
 import 'package:lottie/lottie.dart';

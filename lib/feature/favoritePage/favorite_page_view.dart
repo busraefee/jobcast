@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:jobjob/product/models/jobmodel.dart';
 import '../../product/components/app_color.dart';
-import '../../models/homemodel.dart';
 import '../../product/components/app_string.dart';
 import '../../services/cloud_service.dart';
 
@@ -57,19 +57,22 @@ class _FavoriteViewState extends State<FavoriteView> {
           itemCount: _favList.length,
           itemBuilder: (BuildContext context, int index) {
             JobsModel job = _favList[index];
-            return Card(
-              color: Colors.grey,
-              child: ListTile(
-                leading: SizedBox(child: Image.network(job.jobImage ?? "")),
-                title: Text(job.jobName ?? ""),
-                subtitle: Text(job.jobDetail ?? ""),
-                trailing: IconButton(
-                  onPressed: () {
-                    getFav(job);
-                  },
-                  icon: const Icon(Icons.star),
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 5),
+              child: Card(
+                color: Colors.white,
+                child: ListTile(
+                  leading: SizedBox(child: Image.network(job.jobImage ?? "")),
+                  title: Text(job.jobName ?? ""),
+                  subtitle: Text(job.jobDetail ?? ""),
+                  trailing: IconButton(
+                    onPressed: () {
+                      getFav(job);
+                    },
+                    icon: const Icon(Icons.star),
+                  ),
+                  iconColor: Colors.yellow,
                 ),
-                iconColor: Colors.yellow,
               ),
             );
           },

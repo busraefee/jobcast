@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:jobjob/product/models/jobmodel.dart';
 import '../components/app_color.dart';
-import '../../models/homemodel.dart';
 import '../../services/cloud_service.dart';
 import 'package:kartal/kartal.dart';
 import '../../feature/descriptionPage/view/description_page_view.dart';

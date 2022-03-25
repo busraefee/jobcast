@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../../../product/components/app_color.dart';
-import '../../login/view/login_view.dart';
-import '../../../models/usermodel.dart';
+import 'package:jobjob/feature/authentication/view/login_view.dart';
+import 'package:jobjob/product/components/app_color.dart';
+import 'package:jobjob/product/models/usermodel.dart';
+
 import '../../../services/auth_service.dart';
 import '../../../product/widgets/profile_custom_elevated_button.dart';
 

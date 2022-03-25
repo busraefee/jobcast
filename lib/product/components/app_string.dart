@@ -15,9 +15,9 @@ class AppString {
   static const jobAdd = "İŞ OLUŞTUR";
   static const isTanimi = "İş Tanımı";
   static const isDetayi = "İş Detayı";
-  static const il = "İL";
-  static const semt = "SEMT";
-  static const adres = "ADRES";
+  static const il = "İl";
+  static const semt = "Semt";
+  static const adres = "Adres";
   static const ilanDetaylari = "İlan Detayları";
   static const ilanTarihi = "İlan Tarihi:";
   static const ilanTarihiGirilmedi = "İlan Tarihi Girilmedi";

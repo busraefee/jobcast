@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:jobjob/product/models/jobmodel.dart';
+import 'package:jobjob/product/models/usermodel.dart';
 import '../../../product/components/app_color.dart';
-import '../../../models/homemodel.dart';
-import '../../../models/usermodel.dart';
 import '../../../product/components/app_string.dart';
 import '../../../services/cloud_service.dart';
 import 'package:kartal/kartal.dart';
