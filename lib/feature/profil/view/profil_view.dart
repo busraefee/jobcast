@@ -59,7 +59,7 @@ class _ProfilViewState extends State<ProfilView> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(
-                height: 50,
+                height: 80,
               ),
               SizedBox(
                   height: 200,
@@ -86,48 +86,45 @@ class _ProfilViewState extends State<ProfilView> {
                 "${widget.user.userName} ${widget.user.userSurname}",
                 style: const TextStyle(fontSize: 20),
               ),
-              const SizedBox(
-                height: 20,
-              ),
               Expanded(
                 child: ListView.builder(
-                  //shrinkWrap: true,
-                  //primary: false,
                   scrollDirection: Axis.horizontal,
                   itemCount: 5,
                   itemBuilder: (context, index) {
-                    return Card(
-                      elevation: 8,
-                      color: AppColor.orange,
-                      child: Column(
-                        children: [
-                          const SizedBox(height: 80),
-                          const Text(
-                            "Kuzey Tekinoğlu",
-                            style:
-                                TextStyle(fontSize: 18, color: AppColor.white),
-                          ),
-                          Row(
-                            children: const [
-                              Icon(Icons.star),
-                              Icon(Icons.star),
-                              Icon(Icons.star),
-                              Icon(Icons.star),
-                              Icon(Icons.star),
-                              SizedBox(
-                                height: 20,
-                              )
-                            ],
-                          ),
-                          const Text("Kaliteli Bir Köpek gezdiricir kendisi"),
-                        ],
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 5),
+                      child: Card(
+                        margin: EdgeInsets.symmetric(vertical: 50),
+                        elevation: 8,
+                        color: AppColor.orange,
+                        child: Column(
+                          children: [
+                            const SizedBox(height: 40),
+                            const Text(
+                              "Kuzey Tekinoğlu",
+                              style: TextStyle(
+                                  fontSize: 18, color: AppColor.white),
+                            ),
+                            Row(
+                              children: const [
+                                Icon(Icons.star),
+                                Icon(Icons.star),
+                                Icon(Icons.star),
+                                Icon(Icons.star),
+                                Icon(Icons.star),
+                                SizedBox(
+                                  height: 3,
+                                )
+                              ],
+                            ),
+                            const Text("Kaliteli Bir Köpek gezdiricir kendisi"),
+                          ],
+                        ),
                       ),
                     );
                   },
                 ),
-              ),
-              const SizedBox(
-                height: 60,
               ),
             ],
           ),
